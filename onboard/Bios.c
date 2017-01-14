@@ -96,6 +96,11 @@ void GPIO_Config(void) {
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//pullup just in case something resets the accel
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
+	//--------INT 2 == PB3 -------------------------------------------------//
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//pullup just in case something resets the accel
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+
 }
 /*
  * Init the ADC's
