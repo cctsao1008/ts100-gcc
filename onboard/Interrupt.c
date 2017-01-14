@@ -68,7 +68,9 @@ void EXTI9_5_IRQHandler(void) {
 			keyState |= BUT_B;
 		lastKeyPress = millis();
 		EXTI_ClearITPendingBit(EXTI_Line6);
-	} else if (EXTI_GetITStatus(EXTI_Line5) != RESET) {	//Movement Event
+	} else if (EXTI_GetITStatus(EXTI_Line3) != RESET) {	// Freefall Event
+		EXTI_ClearITPendingBit(EXTI_Line3);
+	} else if (EXTI_GetITStatus(EXTI_Line5) != RESET) {	// Motion Event
 		lastMovement = millis();
 		EXTI_ClearITPendingBit(EXTI_Line5);
 	}

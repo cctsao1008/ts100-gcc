@@ -208,10 +208,13 @@ void Init_EXTI(void) {
 	GPIO_PinSource6 | GPIO_PinSource9);
 
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,
-	GPIO_PinSource5);     //PB5 == accelerometer
+	GPIO_PinSource5);     //PB5 == accelerometer, motion, int1
+
+	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,
+	GPIO_PinSource3);     //PB3 == accelerometer, freefall, int2
 
 	/* Configure EXTI5/6/9 line */
-	EXTI_InitStructure.EXTI_Line = EXTI_Line5 | EXTI_Line6 | EXTI_Line9;
+	EXTI_InitStructure.EXTI_Line = EXTI_Line3 | EXTI_Line5 | EXTI_Line6 | EXTI_Line9;
 	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
 	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling; //trigger on up and down
 	EXTI_InitStructure.EXTI_LineCmd = ENABLE;

@@ -9,6 +9,7 @@
 #include "Oled.h"
 #include "Settings.h"
 #include "I2C.h"
+
 void setup();
 
 int main(void) {
@@ -36,7 +37,9 @@ void setup() {
 	restoreSettings();					//Load settings
 	if (systemSettings.flipDisplay)
 		Oled_DisplayFlip();
-	OLED_DrawString("VER 1.01",8);
+	//OLED_DrawString("VER 1.01",8);
+	OLED_DrawString("Ricardo",7);
 	delayMs(800);
 	Start_Watchdog(1000); 		//start the system watchdog as 1 seconds timeout
 }
+
