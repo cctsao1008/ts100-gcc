@@ -30,7 +30,7 @@ BIN_DIR		 = $(ROOT)/bin
 #
 # Source files common to all targets
 #
-$(TARGET)_SRC	= startup_stm32f10x_md.s system_stm32f10x.c misc.c main.c \
+$(TARGET)_SRC	= startup_stm32f10x_md.s system_stm32f10x.c misc.c syscalls.c main.c \
 		   stm32f10x_adc.c stm32f10x_dma.c stm32f10x_exti.c stm32f10x_flash.c stm32f10x_gpio.c stm32f10x_iwdg.c \
 		   stm32f10x_rcc.c stm32f10x_tim.c stm32f10x_i2c.c \
 		   Analog.c Bios.c I2C.c Interrupt.c MMA8652FC.c Modes.c Oled.c PID.c Settings.c
@@ -73,10 +73,8 @@ LDFLAGS			= -lm \
 			-static \
 			-Wl,-gc-sections  \
 			--specs=nano.specs \
-			--specs=nosys.specs \
-#			--specs=rdimon.specs \
-#			-u _printf_float \
-#			-u _scanf_float \
+			-u _printf_float \
+			-u _scanf_float \
 			-T$(LD_SCRIPT)
 
 #
@@ -92,8 +90,7 @@ CFLAGS = $(BASE_CFLAGS) \
 	-O0
 else
 CFLAGS = $(BASE_CFLAGS) \
-	-Os \
-	-std=c99
+	-Os
 endif
 
 TARGET_HEX	 = $(BIN_DIR)/$(TARGET).hex
