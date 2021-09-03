@@ -90,8 +90,7 @@ CFLAGS = $(BASE_CFLAGS) \
 	-O0
 else
 CFLAGS = $(BASE_CFLAGS) \
-	-Os \
-	-std=c99
+	-Os
 endif
 
 TARGET_HEX	 = $(BIN_DIR)/$(TARGET).hex
