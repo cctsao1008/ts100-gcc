@@ -90,7 +90,7 @@ CFLAGS = $(BASE_CFLAGS) \
 	-O0
 else
 CFLAGS = $(BASE_CFLAGS) \
-	-Os
+	-Os \
 	-std=c99
 endif
 
